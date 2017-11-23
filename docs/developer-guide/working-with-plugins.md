@@ -4,7 +4,7 @@ Each plugin is an npm module with a name in the format of `eslint-plugin-<plugin
 
 ## Create a Plugin
 
-The easiest way to start creating a plugin is to use the [Yeoman generator](https://npmjs.com/package/generator-eslint). The generator will guide you through setting up the skeleton of a plugin.
+The easiest way to start creating a plugin is to use the [Yeoman generator](https://www.npmjs.com/package/generator-eslint). The generator will guide you through setting up the skeleton of a plugin.
 
 ### Rules in Plugins
 
@@ -132,7 +132,7 @@ configs: {
 }
 ```
 
-**Note:** Please note that configuration will not automatically attach your rules and you have to specify your plugin name and any rules you want to enable that are part of the plugin. Any plugin rules must be prefixed with the short or long plugin name. See [Configuring Plugins](../user-guide/configuring#configuring-plugins)
+**Note:** Please note that configuration will not automatically attach your rules and you have to specify your plugin name and any rules you want to enable that are part of the plugin. Any plugin rules must be prefixed with the short or long plugin name. See [Configuring Plugins](../user-guide/configuring.md#configuring-plugins)
 
 ### Peer Dependency
 
@@ -149,7 +149,7 @@ The plugin support was introduced in ESLint version `0.8.0`. Ensure the `peerDep
 
 ### Testing
 
-ESLint provides the [`RuleTester`](/docs/developer-guide/nodejs-api#ruletester) utility to make it easy to test the rules of your plugin.
+ESLint provides the [`RuleTester`](/docs/developer-guide/nodejs-api.md#ruletester) utility to make it easy to test the rules of your plugin.
 
 ## Share Plugins
 
@@ -204,7 +204,7 @@ All nodes must have `range` property.
 * `range` (`number[]`) is an array of two numbers. Both numbers are a 0-based index which is the position in the array of source code characters. The first is the start position of the node, the second is the end position of the node. `code.slice(node.range[0], node.range[1])` must be the text of the node. This range does not include spaces/parentheses which are around the node.
 * `loc` (`SourceLocation`) must not be `null`. [The `loc` property is defined as nullable by ESTree](https://github.com/estree/estree/blob/25834f7247d44d3156030f8e8a2d07644d771fdb/es5.md#node-objects), but ESLint requires this property. On the other hand, `SourceLocation#source` property can be `undefined`. ESLint does not use the `SourceLocation#source` property.
 
-The `parent` property of all nodes must be rewriteable. ESLint sets each node's `parent` property to its parent node while traversing, before any rules have access to the AST.
+The `parent` property of all nodes must be rewriteable. ESLint sets each node's parent properties to its parent node while traversing.
 
 #### The `Program` node:
 
